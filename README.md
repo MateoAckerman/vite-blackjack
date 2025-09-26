@@ -7,7 +7,7 @@ Juego de cartas (Blackjack) hecho como ejercicio práctico. Usa Vite para desarr
 
 ## Estado
 
-Proyecto de ejemplo / demo. Listo para ejecutar en modo desarrollo.
+Proyecto demo. Listo para ejecutar en modo desarrollo.
 
 ## Estructura del proyecto
 
