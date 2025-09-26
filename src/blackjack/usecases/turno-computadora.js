@@ -1,4 +1,5 @@
 import { pedirCarta, valorCarta, crearCartaHTML } from "./";
+import { mostrarResultado } from './mostrar-resultado.js';
 
 /**
  * 
@@ -19,7 +20,7 @@ export const turnoComputadora = ( puntosMinimos, puntosHTML, divCartasComputador
         const carta = pedirCarta(deck);
 
         puntosComputadora = puntosComputadora + valorCarta( carta );
-        puntosHTML[1].innerText = puntosComputadora;
+        puntosHTML.innerText = puntosComputadora;
         
         const imgCarta = crearCartaHTML( carta );
         divCartasComputadora.append( imgCarta );
@@ -30,15 +31,21 @@ export const turnoComputadora = ( puntosMinimos, puntosHTML, divCartasComputador
 
     } while(  (puntosComputadora < puntosMinimos)  && (puntosMinimos <= 21 ) );
 
-    setTimeout(() => {
-        if( puntosComputadora === puntosMinimos ) {
-            alert('Nadie gana :(');
-        } else if ( puntosMinimos > 21 ) {
-            alert('Computadora gana')
-        } else if( puntosComputadora > 21 ) {
-            alert('Jugador Gana');
-        } else {
-            alert('Computadora Gana')
-        }
-    }, 100 );
+    let resultadoTexto = '';
+    let resultado = '';
+    if( puntosComputadora === puntosMinimos ) {
+        resultadoTexto = '¡ Empate, nadie gana !';
+        resultado = 'empate';
+    } else if ( puntosMinimos > 21 ) {
+        resultadoTexto = 'Has perdido, ¡ Mucha suerte la proxima !';
+        resultado = 'perdiste';
+    } else if( puntosComputadora > 21 ) {
+        resultadoTexto = 'Has ganado, ¡ Felicidades !';
+        resultado = 'ganaste';
+    } else {
+        resultadoTexto = 'Has perdido, ¡ Mucha suerte la proxima !';
+        resultado = 'perdiste';
+    }
+
+    mostrarResultado( resultadoTexto, resultado );
 }
