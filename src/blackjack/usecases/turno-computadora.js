@@ -13,13 +13,14 @@ export const turnoComputadora = ( puntosMinimos, puntosHTML, divCartasComputador
 
     if ( !puntosMinimos ) throw new Error('Puntos minimos son necesarios');
     if ( !puntosHTML ) throw new Error('Puntos HTML son necesarios');
+    if ( !divCartasComputadora ) throw new Error('Div de cartas de computadora es necesario');
 
     let puntosComputadora = 0;
 
     do {
-        const carta = pedirCarta(deck);
+        const carta = pedirCarta(deck) || ''; // Ensure pedirCarta returns a valid card
 
-        puntosComputadora = puntosComputadora + valorCarta( carta );
+        puntosComputadora += valorCarta(carta) || 0; // Ensure valorCarta returns a valid number
         puntosHTML.innerText = puntosComputadora;
         
         const imgCarta = crearCartaHTML( carta );

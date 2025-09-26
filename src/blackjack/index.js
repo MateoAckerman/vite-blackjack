@@ -50,7 +50,7 @@ btnPedir.addEventListener('click', () => {
         console.warn(puntosJugador > 21 ? 'Lo siento mucho, perdiste' : '21, genial!');
         btnPedir.disabled   = true;
         btnDetener.disabled = true;
-        turnoComputadora( puntosJugador, puntosHTML, divCartasComputadora, deck );
+        turnoComputadora( puntosJugador, puntosHTML[1], divCartasComputadora, deck );
     }
 
     //     if ( puntosJugador > 21 ) {
